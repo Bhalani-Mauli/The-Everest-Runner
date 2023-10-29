@@ -28,4 +28,15 @@ class Player {
     this.element.style.left = `${this.left}px`;
     this.element.style.bottom = `${this.bottom}px`;
   }
+
+  run() {
+    let current = this.element.src;
+    setInterval(() => {
+      if (this.element.src == current) {
+        this.element.src = "../../assets/character/jump/j_003.png";
+      } else {
+        this.element.src = current;
+      }
+    }, 500);
+  }
 }
