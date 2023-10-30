@@ -111,6 +111,14 @@ body {
   width: 50px;
 }
 
+#game-screen > .big-mountain {
+  animation: runBigMountain 5s linear infinite;
+}
+
+#game-screen > .small-mountain {
+  animation: runSmallMountain 5s linear infinite;
+}
+
 @keyframes run {
   0% {
     background-position: 4000px 0;
@@ -118,4 +126,26 @@ body {
   100% {
     background-position: 0 0;
   }
+}
+
+@keyframes runBigMountain {
+  0% {
+    background-position: 200px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes runSmallMountain {
+  0% {
+    background-position: 500px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+#game-screen {
+  width: 100%;
 }
