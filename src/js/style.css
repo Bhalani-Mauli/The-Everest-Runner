@@ -98,6 +98,15 @@ body {
   display: none;
 }
 
+.scoreLives-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.score-img {
+  width: 50px;
+}
+
 .lives-img {
   width: 50px;
 }

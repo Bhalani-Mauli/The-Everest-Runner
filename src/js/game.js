@@ -3,6 +3,7 @@ class Game {
     this.startScreen = document.querySelector("#game-intro");
     this.gameContainer = document.querySelector("#game-container");
     this.gameScreen = document.querySelector("#game-screen");
+    this.scoreIcon = document.querySelector("#score");
     this.livesAll = document.querySelector("#lives");
     this.player = new Player(
       this.gameScreen,
@@ -22,6 +23,12 @@ class Game {
     this.startScreen.style.display = "none";
     this.gameContainer.style.display = "block";
     this.gameScreen.style.display = "block";
+  }
+  createScoreIcon() {
+    const element = document.createElement("img");
+    element.classList.add("score-img");
+    element.src = "../../assets/score/snowman.svg";
+    this.scoreIcon.appendChild(element);
   }
   createLivesIcon() {
     for (let i = 0; i < this.lives; i++) {
