@@ -17,26 +17,41 @@ class Player {
     this.element.style.bottom = `${this.bottom}px`;
     this.element.style.zIndex = 3;
     this.gameScreen.appendChild(this.element);
+    this.isJumping = false;
   }
 
-  move() {
-    this.left += this.directionX;
-    this.bottom += this.directionY;
+  move(direction) {
+    if (this.left < 0) return;
+    if (direction === "right") {
+      this.left += 10;
+    } else {
+      this.left -= 10;
+    }
+    this.updatePosition();
   }
 
   updatePosition() {
     this.element.style.left = `${this.left}px`;
-    this.element.style.bottom = `${this.bottom}px`;
   }
 
-  run() {
+  runAnimation() {
     let current = this.element.src;
     setInterval(() => {
       if (this.element.src == current) {
-        this.element.src = "../../assets/character/jump/j_003.png";
+        this.element.src = "../../assets/character/run/r_004.png";
       } else {
         this.element.src = current;
       }
-    }, 500);
+    }, 200);
+  }
+
+  jump() {
+    if (this.isJumping) return;
+    this.isJumping = true;
+    this.element.style.bottom = 300 + "px";
+    setTimeout(() => {
+      this.isJumping = false;
+      this.element.style.bottom = 130 + "px";
+    }, 400);
   }
 }

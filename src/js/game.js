@@ -13,7 +13,7 @@ class Game {
       150,
       "../../assets/character/run/r_000.png"
     );
-    this.player.run();
+    this.player.runAnimation(); // from image 1 to image 2 on player
     this.obstacles = [];
     this.score = 0;
     this.lives = 3;
@@ -39,6 +39,6 @@ class Game {
     }
   }
   update() {
-    this.player.move();
+    // this.player.move();
   }
 }
