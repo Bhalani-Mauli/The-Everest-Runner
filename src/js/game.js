@@ -14,7 +14,7 @@ class Game {
       "../../assets/character/run/r_000.png"
     );
     this.player.runAnimation(); // from image 1 to image 2 on player
-    this.obstacles = [];
+    this.obstacles = [new Obstacle(this.gameScreen)];
     this.score = 0;
     this.lives = 3;
   }
@@ -27,7 +27,7 @@ class Game {
   createScoreIcon() {
     const element = document.createElement("img");
     element.classList.add("score-img");
-    element.src = "../../assets/score/snowman.svg";
+    // element.src
     this.scoreIcon.appendChild(element);
   }
   createLivesIcon() {
@@ -40,5 +40,7 @@ class Game {
   }
   update() {
     // this.player.move();
+    const obstacle = this.obstacles[0];
+    obstacle.move();
   }
 }
