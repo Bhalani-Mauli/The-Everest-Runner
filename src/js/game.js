@@ -13,10 +13,10 @@ class Game {
       150,
       "../../assets/character/run/r_000.png"
     );
-    // this.height = 800;
-    this.width = 0;
+    this.width = window.screen.width;
     this.player.runAnimation(); // from image 1 to image 2 on player
     this.obstacles = [new Obstacle(this.gameScreen)];
+    this.points = [new Points(this.gameScreen)];
     this.score = 0;
     this.lives = 3;
   }
@@ -26,14 +26,13 @@ class Game {
     this.gameContainer.style.display = "block";
     this.gameScreen.style.display = "block";
     setInterval(() => {
-      console.log("Game loop is running!");
       this.update();
-    }, 1000 / 60);
+    }, 1000 / 20);
   }
   createScoreIcon() {
     const element = document.createElement("img");
     element.classList.add("score-img");
-    // element.src
+    element.src = "../../assets/score/teaCup.svg";
     this.scoreIcon.appendChild(element);
   }
   createLivesIcon() {
@@ -49,11 +48,20 @@ class Game {
     const obstacle = this.obstacles[0];
     obstacle.move();
 
-    if (obstacle.left < this.width) {
+    if (obstacle.right > this.width) {
       if (Math.random() > 0.98) {
         obstacle.element.remove();
         this.obstacles = [];
         this.obstacles.push(new Obstacle(this.gameScreen));
+      }
+    }
+    const point = this.points[0];
+    point.move();
+    if (point.right > this.width) {
+      if (Math.random() > 0.98) {
+        point.element.remove();
+        this.points = [];
+        this.points.push(new Points(this.gameScreen));
       }
     }
   }
