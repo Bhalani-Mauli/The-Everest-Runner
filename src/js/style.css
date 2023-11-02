@@ -105,6 +105,7 @@ body {
 .score {
   display: flex;
   flex-direction: row-reverse;
+  margin: 10px;
 }
 .score-wrapper {
   color: red;
@@ -123,6 +124,30 @@ body {
 
 #game-screen > .small-mountain {
   animation: runSmallMountain 5s linear infinite;
+}
+
+.restart-btn {
+  position: absolute;
+  font-size: 30px;
+  z-index: 3;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+#game-end > h1 {
+  font-family: "Games", sans-serif;
+  color: #b6f0fd;
+  font-size: 80px;
+  font-weight: 400;
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  margin: 10px;
+  text-shadow: 0px 1px 20px #160808;
 }
 
 /* @keyframes run {

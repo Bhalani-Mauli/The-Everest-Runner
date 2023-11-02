@@ -20,7 +20,7 @@ class Obstacle {
     this.element.style.top = `${this.top}px`;
   }
   move() {
-    this.right += 5;
+    this.right += 15;
     this.updatePosition();
   }
 }
