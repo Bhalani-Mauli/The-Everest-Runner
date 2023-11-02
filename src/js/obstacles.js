@@ -3,7 +3,7 @@ class Obstacle {
     this.gameScreen = gameScreen;
     this.right = -Math.floor(Math.random() * 100);
     this.top = 600;
-    this.width = 80;
+    this.width = 60;
     this.element = document.createElement("img");
     this.element.src = "../../assets/obstacle/snowman.svg";
     this.directionX = 0;
@@ -20,7 +20,7 @@ class Obstacle {
     this.element.style.top = `${this.top}px`;
   }
   move() {
-    this.right += 12;
+    this.right += 20;
     this.updatePosition();
   }
 }

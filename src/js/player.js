@@ -48,10 +48,26 @@ class Player {
   jump() {
     if (this.isJumping) return;
     this.isJumping = true;
-    this.element.style.bottom = 300 + "px";
+    this.element.style.bottom = 330 + "px";
     setTimeout(() => {
       this.isJumping = false;
       this.element.style.bottom = 130 + "px";
-    }, 400);
+    }, 500);
+  }
+
+  didCollide(obstacle) {
+    const playerRect = this.element.getBoundingClientRect();
+    const obstacleRect = obstacle.element.getBoundingClientRect();
+
+    if (
+      playerRect.left < obstacleRect.right &&
+      playerRect.right > obstacleRect.left &&
+      playerRect.top < obstacleRect.bottom &&
+      playerRect.bottom > obstacleRect.top
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

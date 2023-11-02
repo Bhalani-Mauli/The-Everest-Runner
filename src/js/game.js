@@ -5,6 +5,7 @@ class Game {
     this.gameScreen = document.querySelector("#game-screen");
     this.scoreIcon = document.querySelector("#score");
     this.livesAll = document.querySelector("#lives");
+    this.gameEndScreen = document.querySelector("#game-end");
     this.player = new Player(
       this.gameScreen,
       200,
@@ -19,6 +20,8 @@ class Game {
     this.points = [new Points(this.gameScreen)];
     this.score = 0;
     this.lives = 3;
+    this.gameIsOver = false;
+    this.nodeList;
   }
   start() {
     console.log("I am in");
@@ -26,7 +29,11 @@ class Game {
     this.gameContainer.style.display = "block";
     this.gameScreen.style.display = "block";
     setInterval(() => {
-      this.update();
+      if (this.lives === 0) {
+        this.gameEndScreen;
+      } else {
+        this.update();
+      }
     }, 1000 / 20);
   }
   createScoreIcon() {
@@ -36,6 +43,7 @@ class Game {
     this.scoreIcon.appendChild(element);
   }
   createLivesIcon() {
+    // here we are creating 3 heart image !
     for (let i = 0; i < this.lives; i++) {
       const element = document.createElement("img");
       element.classList.add("lives-img");
@@ -44,9 +52,32 @@ class Game {
     }
   }
 
+  deleteLivesIcon() {
+    console.log("STATE NODELIST", this.nodeList);
+    this.nodeList[0].remove();
+    this.nodeList.shift();
+    console.log(this.nodeList);
+  }
+
   update() {
     const obstacle = this.obstacles[0];
     obstacle.move();
+
+    if (this.player.didCollide(obstacle)) {
+      // here is the collision happening !
+      this.lives--;
+      console.log(this.lives);
+
+      this.deleteLivesIcon();
+
+      console.log("You collided with snow man !");
+      obstacle.element.remove();
+      this.obstacles = [];
+      this.obstacles.push(new Obstacle(this.gameScreen));
+      if (!this.lives) {
+        this.endGame();
+      }
+    }
 
     if (obstacle.right > this.width) {
       if (Math.random() > 0.98) {
@@ -64,5 +95,13 @@ class Game {
         this.points.push(new Points(this.gameScreen));
       }
     }
+  }
+  endGame() {
+    this.gameIsOver = true;
+    this.player.element.remove();
+    this.obstacles[0].element.remove();
+    this.obstacles = [];
+    this.gameScreen.style.display = "none";
+    this.gameEndScreen.style.display = "block";
   }
 }
