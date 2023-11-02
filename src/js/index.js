@@ -45,9 +45,6 @@ window.onload = function () {
   window.addEventListener("keydown", handleKeydown);
 
   restartButton.addEventListener("click", function () {
-    // startGame();
     window.location.reload();
-    // const game = new Game();
-    // this.game.gameScreen;
   });
 };
