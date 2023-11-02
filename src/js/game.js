@@ -6,6 +6,7 @@ class Game {
     this.scoreIcon = document.querySelector("#score");
     this.livesAll = document.querySelector("#lives");
     this.gameEndScreen = document.querySelector("#game-end");
+    this.scoreElement = document.getElementById("scoreCount");
     this.player = new Player(
       this.gameScreen,
       200,
@@ -86,8 +87,26 @@ class Game {
         this.obstacles.push(new Obstacle(this.gameScreen));
       }
     }
+
+    // point;
+
     const point = this.points[0];
     point.move();
+
+    if (this.player.didCollidePoint(point)) {
+      // Player collided with a point
+
+      console.log("You collided with teacup!");
+      point.element.remove();
+      this.points = [];
+      this.points.push(new Points(this.gameScreen));
+      // You can add logic here for updating the score or performing other actions.
+      // For example: this.score++;
+      this.score++;
+      this.scoreElement.textContent = this.score;
+      console.log(this.score);
+    }
+
     if (point.right > this.width) {
       if (Math.random() > 0.98) {
         point.element.remove();

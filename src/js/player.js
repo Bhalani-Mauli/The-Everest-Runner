@@ -70,4 +70,28 @@ class Player {
       return false;
     }
   }
+
+  didCollidePoint(point) {
+    const playerRect = this.element.getBoundingClientRect();
+    const pointRect = point.element.getBoundingClientRect();
+
+    if (
+      playerRect.bottom > pointRect.top &&
+      playerRect.top < pointRect.bottom &&
+      playerRect.right > pointRect.left &&
+      playerRect.left < pointRect.right
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // points.forEach((point) => {
+  //   if (player.didCollidePoint(point)) {
+  //     point.element.remove(); // Remove the collected point from the DOM
+  //     // You can add logic here for updating the score or performing other actions.
+  //     console.log("Player collected a point!");
+  //   }
+  // });
 }
