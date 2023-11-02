@@ -2,6 +2,7 @@ window.onload = function () {
   const startButton = document.getElementById("start-button");
   const game = new Game();
   game.createScoreIcon();
+  game.createScoreCount();
   game.createLivesIcon();
   game.nodeList = [...document.querySelectorAll(".lives-img")];
   startButton.addEventListener("click", function () {
