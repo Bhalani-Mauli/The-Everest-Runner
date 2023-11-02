@@ -86,12 +86,3 @@ class Player {
       return false;
     }
   }
-
-  // points.forEach((point) => {
-  //   if (player.didCollidePoint(point)) {
-  //     point.element.remove(); // Remove the collected point from the DOM
-  //     // You can add logic here for updating the score or performing other actions.
-  //     console.log("Player collected a point!");
-  //   }
-  // });
-}

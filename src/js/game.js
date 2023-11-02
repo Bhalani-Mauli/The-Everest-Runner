@@ -25,17 +25,13 @@ class Game {
     this.nodeList;
   }
   start() {
-    console.log("I am in");
     this.startScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
     this.gameContainer.style.display = "block";
     this.gameScreen.style.display = "block";
     setInterval(() => {
-      if (this.lives === 0) {
-        this.gameEndScreen;
-      } else {
-        this.update();
-      }
+      if (this.lives === 0) this.gameEndScreen;
+      else this.update();
     }, 1000 / 20);
   }
   createScoreIcon() {
@@ -63,10 +59,8 @@ class Game {
   }
 
   deleteLivesIcon() {
-    console.log("STATE NODELIST", this.nodeList);
     this.nodeList[0].remove();
     this.nodeList.shift();
-    console.log(this.nodeList);
   }
 
   update() {
@@ -76,11 +70,9 @@ class Game {
     if (this.player.didCollide(obstacle)) {
       // here is the collision happening !
       this.lives--;
-      console.log(this.lives);
 
       this.deleteLivesIcon();
 
-      console.log("You collided with snow man !");
       obstacle.element.remove();
       this.obstacles = [];
       this.obstacles.push(new Obstacle(this.gameScreen));
@@ -104,7 +96,6 @@ class Game {
 
     if (this.player.didCollidePoint(point)) {
       // Player collided with a point
-      console.log("You collided with teacup!");
       point.element.remove();
       this.points = [];
       this.points.push(new Points(this.gameScreen));
@@ -112,8 +103,6 @@ class Game {
       // For example: this.score++;
       this.score++;
       this.scoreElement.textContent = this.score;
-
-      console.log(this.score);
     }
 
     if (point.right > this.width) {

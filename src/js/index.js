@@ -8,13 +8,10 @@ window.onload = function () {
   game.createLivesIcon();
   game.nodeList = [...document.querySelectorAll(".lives-img")];
   startButton.addEventListener("click", function () {
-    console.log("start");
-
     startGame();
   });
 
   function startGame() {
-    console.log("start game");
     game.start();
   }
   function handleKeydown(event) {
@@ -32,11 +29,9 @@ window.onload = function () {
           game.player.jump();
           break;
         case "ArrowLeft":
-          console.log("clicked left");
           game.player.move("left");
           break;
         case "ArrowRight":
-          console.log("clicked right");
           game.player.move("right");
           break;
       }
