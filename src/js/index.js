@@ -1,5 +1,7 @@
 window.onload = function () {
   const startButton = document.getElementById("start-button");
+  const restartButton = document.getElementById("restart-button");
+
   const game = new Game();
   game.createScoreIcon();
   game.createScoreCount();
@@ -41,4 +43,11 @@ window.onload = function () {
     }
   }
   window.addEventListener("keydown", handleKeydown);
+
+  restartButton.addEventListener("click", function () {
+    // startGame();
+    window.location.reload();
+    // const game = new Game();
+    // this.game.gameScreen;
+  });
 };
