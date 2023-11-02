@@ -27,6 +27,7 @@ class Game {
   start() {
     console.log("I am in");
     this.startScreen.style.display = "none";
+    this.gameEndScreen.style.display = "none";
     this.gameContainer.style.display = "block";
     this.gameScreen.style.display = "block";
     setInterval(() => {
@@ -128,6 +129,7 @@ class Game {
     this.player.element.remove();
     this.obstacles[0].element.remove();
     this.obstacles = [];
+    this.score;
     this.gameScreen.style.display = "none";
     this.gameEndScreen.style.display = "block";
   }
