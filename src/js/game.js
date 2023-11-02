@@ -25,17 +25,13 @@ class Game {
     this.nodeList;
   }
   start() {
-    console.log("I am in");
     this.startScreen.style.display = "none";
     this.gameEndScreen.style.display = "none";
     this.gameContainer.style.display = "block";
     this.gameScreen.style.display = "block";
     setInterval(() => {
-      if (this.lives === 0) {
-        this.gameEndScreen;
-      } else {
-        this.update();
-      }
+      if (this.lives === 0) this.gameEndScreen;
+      else this.update();
     }, 1000 / 20);
   }
   createScoreIcon() {

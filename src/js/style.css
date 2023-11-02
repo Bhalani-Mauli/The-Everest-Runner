@@ -18,7 +18,7 @@ body {
 .big-mountain {
   background: url("/assets/backBigMountain.png");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center center;
   position: absolute;
   right: 0;
@@ -30,14 +30,18 @@ body {
 .small-mountain {
   background: url("/assets/backSmallMountain.png");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center center;
   position: absolute;
   right: 0;
-  bottom: 50px;
+  bottom: 70px;
   z-index: 1;
   width: 100%;
   height: 450px;
+}
+
+#game-screen > .small-mountain {
+  animation: runSmallMountain 5s linear infinite;
 }
 
 .running-platform {
@@ -57,9 +61,10 @@ body {
 
 .character {
   position: absolute;
-  top: 540px;
+  bottom: 130px;
   left: 60px;
   z-index: 3;
+  transition: bottom 0.4s ease 0s;
 }
 
 .image-container > h1 {
@@ -106,6 +111,7 @@ body {
   display: flex;
   flex-direction: row-reverse;
   margin: 10px;
+  gap: 20px;
 }
 .score-wrapper {
   color: red;
@@ -114,16 +120,21 @@ body {
   width: 50px;
 }
 
+#lives {
+  margin-top: 20px;
+}
+
 .lives-img {
   width: 50px;
 }
 
-#game-screen > .big-mountain {
-  animation: runBigMountain 5s linear infinite;
+.snow-man {
+  border-radius: 20%;
+  box-shadow: rgba(233, 230, 53, 0.076) 0px 30px 60px -12px inset;
 }
 
-#game-screen > .small-mountain {
-  animation: runSmallMountain 5s linear infinite;
+#game-screen > .big-mountain {
+  animation: runBigMountain 5s linear infinite;
 }
 
 .restart-btn {
@@ -150,14 +161,14 @@ body {
   text-shadow: 0px 1px 20px #160808;
 }
 
-/* @keyframes run {
+@keyframes run {
   0% {
     background-position: 2000px 0;
   }
   100% {
     background-position: 0 0;
   }
-} */
+}
 
 @keyframes runBigMountain {
   0% {
