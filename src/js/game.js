@@ -21,6 +21,7 @@ class Game {
     this.score = 0;
     this.lives = 3;
     this.gameIsOver = false;
+    this.nodeList;
   }
   start() {
     console.log("I am in");
@@ -42,6 +43,7 @@ class Game {
     this.scoreIcon.appendChild(element);
   }
   createLivesIcon() {
+    // here we are creating 3 heart image !
     for (let i = 0; i < this.lives; i++) {
       const element = document.createElement("img");
       element.classList.add("lives-img");
@@ -50,12 +52,25 @@ class Game {
     }
   }
 
+  deleteLivesIcon() {
+    console.log("STATE NODELIST", this.nodeList);
+    this.nodeList[0].remove();
+    this.nodeList.shift();
+    console.log(this.nodeList);
+  }
+
   update() {
     const obstacle = this.obstacles[0];
     obstacle.move();
 
     if (this.player.didCollide(obstacle)) {
+      // here is the collision happening !
       this.lives--;
+      console.log(this.lives);
+
+      this.deleteLivesIcon();
+
+      console.log("You collided with snow man !");
       obstacle.element.remove();
       this.obstacles = [];
       this.obstacles.push(new Obstacle(this.gameScreen));

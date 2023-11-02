@@ -3,9 +3,10 @@ window.onload = function () {
   const game = new Game();
   game.createScoreIcon();
   game.createLivesIcon();
-
+  game.nodeList = [...document.querySelectorAll(".lives-img")];
   startButton.addEventListener("click", function () {
     console.log("start");
+
     startGame();
   });
 
