@@ -86,3 +86,4 @@ class Player {
       return false;
     }
   }
+}
