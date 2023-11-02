@@ -6,7 +6,7 @@ class Game {
     this.scoreIcon = document.querySelector("#score");
     this.livesAll = document.querySelector("#lives");
     this.gameEndScreen = document.querySelector("#game-end");
-    this.scoreElement = document.getElementById("scoreCount");
+    this.scoreElement = document.querySelector("#scoreCount");
     this.player = new Player(
       this.gameScreen,
       200,
@@ -42,6 +42,7 @@ class Game {
     element.classList.add("score-img");
     element.src = "../../assets/score/teaCup.svg";
     this.scoreIcon.appendChild(element);
+    this.scoreIcon = element;
   }
   createLivesIcon() {
     // here we are creating 3 heart image !
@@ -51,6 +52,13 @@ class Game {
       element.src = "./assets/heart/heart_red.svg";
       this.livesAll.appendChild(element);
     }
+  }
+
+  createScoreCount() {
+    const element = document.createElement("h2");
+    element.textContent = "0";
+    // element.classList.add("score-wrapper");
+    this.scoreElement.textContent = "0";
   }
 
   deleteLivesIcon() {
@@ -95,7 +103,6 @@ class Game {
 
     if (this.player.didCollidePoint(point)) {
       // Player collided with a point
-
       console.log("You collided with teacup!");
       point.element.remove();
       this.points = [];
@@ -104,6 +111,7 @@ class Game {
       // For example: this.score++;
       this.score++;
       this.scoreElement.textContent = this.score;
+
       console.log(this.score);
     }
 

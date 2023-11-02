@@ -102,7 +102,13 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-
+.score {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.score-wrapper {
+  color: red;
+}
 .score-img {
   width: 50px;
 }
