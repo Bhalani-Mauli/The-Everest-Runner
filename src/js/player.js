@@ -52,7 +52,7 @@ class Player {
     setTimeout(() => {
       this.isJumping = false;
       this.element.style.bottom = 130 + "px";
-    }, 500);
+    }, 800);
   }
 
   didCollide(obstacle) {
